@@ -24,7 +24,7 @@ class fib:
     def GET(self, n):
         n = int(n)
         value = self.fib(n)
-        return str(n)
+        return str(value)
 
     def fib(self, n):
         if n < 2:
