@@ -75,9 +75,16 @@ outputfile.txt
 $ cat outputfile.txt
 3
 
+To see the log messages:
+
+$ aws lambda invoke --invocation-type RequestResponse --function-name add --region us-east-1 --log-type Tail --payload '{"a":1, "b":2 }' outputfile.txt | jq -r '.LogResult' | base64 --decode
+
+START RequestId: 8d7d02fa-2d60-11e7-9211-7fe5c5e9ad64 Version: $LATEST
+END RequestId: 8d7d02fa-2d60-11e7-9211-7fe5c5e9ad64
+REPORT RequestId: 8d7d02fa-2d60-11e7-9211-7fe5c5e9ad64	Duration: 0.39 ms	Billed Duration: 100 ms 	Memory Size: 128 MB	Max Memory Used: 21 MB
+
 ```
 
 To delete the lambda function:
 
 	$ aws lambda delete-function  --function-name add
-
